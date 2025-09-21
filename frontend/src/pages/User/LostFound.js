@@ -40,7 +40,7 @@ const LostFound = () => {
         setUserName(auth.user.fullname);
         setUserPNumber(auth.user.phone);
       }
-    }, [auth]);
+    }, []);
 
     const handleRoleChange = (e) => {
       const value = e.target.value;
@@ -120,7 +120,7 @@ const LostFound = () => {
     try {
       const { data } = await axios.get("http://localhost:8088/api/v1/LostAndFound/getLostItems");
       setItems(data.Items);
-      getAllItems();
+      // getAllItems();
     } catch (error) {
       console.log(error);
       toast.error("Failed to fetch Items");
@@ -177,7 +177,7 @@ const getAllNotification = async () => {
   try {
     const { data } = await axios.get("http://localhost:8088/api/v1/LostAndFound/getAllNotift");
     setAllNotify(data.notifies);
-    getAllNotification();
+    // getAllNotification();
   } catch (error) {
     console.log(error);
     toast.error("Failed to fetch Notifications");
@@ -204,7 +204,6 @@ useEffect(() => {
     <Layout title={"Lost & Found"}>
         <div className ="row flex-nowrap">
           <div className ="col-auto col-md-3 col-xl-3 px-sm-3 px-0" 
-          // style={{backgroundColor:"#BFEA7C"}}
           >
             <div className='left'>
             <div 
@@ -219,12 +218,6 @@ useEffect(() => {
                   </div>
                   <div className='item2'>
                     <div className='KAbar'>
-                          {/* <ul className="KAbarInn">
-                            
-                            <li className="KAbarIn">
-                              Add a New Card
-                            </li>
-                          </ul> */}
                     </div>
                   </div>
                   {/* Photo Upload */}
@@ -268,7 +261,7 @@ useEffect(() => {
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Name"
                             onKeyPress={handleKeyPress}
-                            required
+                            // required
                             />                      
                             </td>
                             <td className='texting'>
@@ -280,7 +273,7 @@ useEffect(() => {
                             placeholder="07xxxxxxxx"
                             onKeyPress={handleKeyNumber}
                             maxLength={10}
-                            required
+                            // required
                             />
                             </td></tr>
                             {/* <tr><br/></tr> */}
@@ -299,7 +292,7 @@ useEffect(() => {
                             onChange={(e) => setItemName(e.target.value)}
                             placeholder="Item Name"
                             onKeyPress={handleKeyPress}
-                            required
+                            // required
                             /> 
                               </td>
                             </tr>
@@ -333,7 +326,7 @@ useEffect(() => {
                             value={Description} 
                             onChange={(e) => setDescription(e.target.value)}
                             placeholder=" write a description"
-                            required
+                            // required
                             />
                               </td></tr>
                       </tbody></table>
@@ -384,9 +377,6 @@ useEffect(() => {
                                         // onClick={() => handleItemClick(f)} // Handle click
                                     >
                                       <div style={{marginTop:"-20px"}}>
-                                            {/* {f.userName}<br></br>
-                                            {f.userPNumber}<br></br>
-                                            {f.email} */}
                                             {f.ItemID.role === "lost" &&(
                                                     <div>
                                                       Your {f.ItemID.itemName} has been found. Please contact {f.userName} at {f.userPNumber} to collect it.
@@ -411,9 +401,6 @@ useEffect(() => {
           <div className="p-2 m-2 d-flex justify-content-between" style={{ marginLeft: '2%'}}>
             <div style={{ marginLeft: '20%'}}>
               <h3>Lost & Found Items</h3>
-              {/* {email}<br></br>
-              {userName}<br></br>
-              {userPNumber} */}
             </div>
               <div>
                 <select value={selectedItemRole} onChange={handleRoleChange} className='selectitem'>
